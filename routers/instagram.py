@@ -1,6 +1,8 @@
 from fastapi import HTTPException, APIRouter
 
-from dependencies import get_instagram_photos
+from dependencies import (
+    get_instagram_photos
+)
 from config import Config
 
 

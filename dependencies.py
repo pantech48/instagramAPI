@@ -3,10 +3,10 @@ import time
 
 from selenium import webdriver
 from selenium.common import TimeoutException
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.chrome.options import Options
 
 from config import Config
 
@@ -16,7 +16,7 @@ def get_instagram_photos(username: str, password: str, target_username: str, max
     options.add_argument('headless')  # run in headless mode
     options.add_argument('no-sandbox')
     options.add_argument('disable-dev-shm-usage')
-    driver = webdriver.Chrome(chrome_options=options)
+    driver = webdriver.Chrome(options=options)
     instagram_login(password, username, driver)
 
     # Go to the target user's page
@@ -37,7 +37,7 @@ def instagram_login(password: str, username: str, driver: webdriver.Chrome) -> N
     driver.get("http://www.instagram.com")
     # Accept cookies
     try:
-        WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 2).until(
             EC.element_to_be_clickable((By.XPATH, '//button[contains(text(), "Allow all cookies")]'))).click()
     except TimeoutException:
         print("Cookies button not found")
@@ -55,10 +55,12 @@ def instagram_login(password: str, username: str, driver: webdriver.Chrome) -> N
     # Click the login button
     WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']"))).click()
     # Skip the "Save Your Login Info?" and "Turn on Notifications" prompts
-    WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, '//button[contains(text(), "Not Now")]'))).click()
-
-
+    try:
+        WebDriverWait(driver, 2).until(
+            EC.element_to_be_clickable((By.XPATH, '//button[contains(text(), "Not Now")]'))).click()
+    except TimeoutException:
+        print("Not Now button not found")
+        pass
 
 
 
