@@ -1,8 +1,7 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 
-from dependencies import get_instagram_photos
+from routers import instagram
 
 app = FastAPI()
 
-
-
+app.include_router(instagram.router)
