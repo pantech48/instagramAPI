@@ -1,6 +1,9 @@
-class Config:
-    GMAIL_INST = "fillipcourte@gmail.com"
-    GMAIL_PASS = "Ll2207157"
+import os
 
-    INSTAGRAM_USERNAME = "fillip.courte"
-    INSTAGRAM_PASSWORD = "Ll2207157"
+
+class Config:
+    # instagram settings
+    INSTAGRAM_URL = "https://www.instagram.com/"
+
+    INSTAGRAM_USERNAME = os.getenv("INSTAGRAM_USERNAME", "default_username")
+    INSTAGRAM_PASSWORD = os.getenv("INSTAGRAM_PASSWORD", "default_password")

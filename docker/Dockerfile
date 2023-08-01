@@ -5,6 +5,9 @@ FROM python:3.8
 COPY . /app
 WORKDIR /app
 
+ENV INSTAGRAM_USERNAME="fillip.courte"
+ENV INSTAGRAM_PASSWORD="Ll2207157"
+
 RUN apt-get update && apt-get install -y \
   libglib2.0-0 \
   libnss3 \
