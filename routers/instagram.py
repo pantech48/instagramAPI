@@ -2,7 +2,7 @@
 This module contains the API endpoints for the Instagram application.
 
 The endpoints are:
-- /getPhotos/{username}: gets the URLs of a user's Instagram photos.
+- /instagram/getPhotos/{username}: gets the URLs of a user's Instagram photos.
 """
 from fastapi import HTTPException, APIRouter
 from fastapi.params import Query

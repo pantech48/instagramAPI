@@ -111,5 +111,3 @@ def get_photo_urls(image_elements: list) -> list:
 
 
 
-
-

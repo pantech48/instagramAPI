@@ -7,6 +7,6 @@ docker stop $(docker ps -aq)
 docker rmi -f instagramapi-web
 
 # Step 3: Build the Docker image
-docker build -t instagramapi-web -f docker/Dockerfile .
+docker build -t instagramapi-web --build-arg INSTAGRAM_USERNAME --build-arg INSTAGRAM_PASSWORD -f docker/Dockerfile .
 
 
