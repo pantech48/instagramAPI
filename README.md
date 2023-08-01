@@ -80,6 +80,6 @@ The API has one endpoint:
 - `GET /getPhotos/{username}`: Fetches Instagram photos from the user profile specified by `username`. You can also specify a `max_photo_count` query parameter to limit the number of photos fetched. Example usage:
 
 ```bash
-curl localhost:8080/getPhotos/johndoe?max_photo_count=10
+curl localhost:8080/instagram/getPhotos/johndoe?max_photo_count=10
 ```
 ---
